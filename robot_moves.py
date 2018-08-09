@@ -30,7 +30,7 @@ def does_file_exist():
     """
     This function only asks the user if the file to automate the robot exists.
     """
-    check = str(input("Do you want to use a text file for automation? (Y/N): ")).lower().strip()
+    check = str(input("Do you want to use a text file for automation? (y/n): ")).lower().strip()
     try:
         if check[0] == 'y':
             return True
@@ -90,7 +90,9 @@ def place_robot(x, y, face_direction):
     new_x = int(x)
     new_y = int(y)
     if 0 <= new_x <= 5 and 0 <= new_y <= 5 and face_direction in directions:
-        robot_location = [ new_x, new_y, face_direction]
+        robot_location[0] = new_x
+        robot_location[1] = new_y
+        robot_location[2] = face_direction
     else:
         print("PLACE argument/s are invalid. %s" % (place_robot.__doc__))
         
@@ -105,13 +107,13 @@ def move():
     #if the robot is facing east increment x but must not be over 5 after increment
     elif robot_location[2] == "EAST" and robot_location[0] < 5:
         robot_location[0] += 1
+
     #if the robot is facing south decrement y but must not be less than 0 after decrement
     elif robot_location[2] == "SOUTH" and robot_location[1] > 0:
         robot_location[1] -= 1
     #if the robot is facing south decrement x but must not be less than 0 after decrement
     elif robot_location[2] == "WEST" and robot_location[0] > 0:
         robot_location[0] -= 1
-
         
 def left():
     """
@@ -152,10 +154,9 @@ def execute_command(command):
             except Exception as error:
                 print(error)
                 print("Please be sure to user the command with arguments: PLACE X,Y,F")
-                
-
         elif new_command[0] == "MOVE":
             move()
+
         elif new_command[0] == "LEFT":
             left()
         elif new_command[0] == "RIGHT":
