@@ -18,6 +18,7 @@ There are two ways to use this script
 2. Use manual mode for flexibility (without using data.txt).
         The user needs to enter each command (one command at a time).
 
+Note: Run this script with Python 3
 """
 
 import sys
