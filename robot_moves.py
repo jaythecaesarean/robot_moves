@@ -69,7 +69,7 @@ def process_file():
             commands = data_file.read().splitlines()
     except Exception as error:
         error_str = "file does not exists. Make sure that this file exists."
-        print("\'%s\' " + error_str % (filename))
+        print("\'{}\' {}".format(filename, error_str))
         print(error)
 
     # check all the commands if valid
@@ -77,7 +77,7 @@ def process_file():
                      if command.split()[0] not in available_commands]
     if invalid_lines:
         print("Invalid commands found on "
-              "following line/s of %s: %s" % (filename, invalid_lines))
+              "following line/s of {}: {}".format(filename, invalid_lines))
         sys.exit(0)
 
     # execute the commands
@@ -106,7 +106,7 @@ def place_robot(x, y, face_direction):
         robot_location[1] = new_y
         robot_location[2] = face_direction
     else:
-        print("PLACE argument/s are invalid. %s" % (place_robot.__doc__))
+        print("PLACE argument/s are invalid. {}".format(place_robot.__doc__))
 
 
 def move():
@@ -150,7 +150,7 @@ def report():
     """
     Show the current location of the robot
     """
-    print("Output: %s" % ','.join(map(str, robot_location)))
+    print("Output: {}".format(','.join(map(str, robot_location))))
 
 
 def execute_command(command):
@@ -186,7 +186,7 @@ def execute_command(command):
             sys.exit(0)
 
     else:
-        print("\'%s\' is not on the our command list. Try Again." % (command))
+        print("\'{}\' is not on the our command list. Try Again.".format(command))
 
 
 def main():
