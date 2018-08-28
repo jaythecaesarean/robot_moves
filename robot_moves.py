@@ -186,7 +186,8 @@ def execute_command(command):
             sys.exit(0)
 
     else:
-        print("\'{}\' is not on the our command list. Try Again.".format(command))
+        print("\'{}\' is not on the our command list."
+              " Try Again.".format(command))
 
 
 def main():
